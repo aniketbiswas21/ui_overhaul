@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 350,
         height: 400,
     },
+    rootCardMobile: {
+        width: 'auto',
+        height: 400
+    },
     media: {
         height: 230,
     },
@@ -146,6 +150,7 @@ const EventsAlt = () => {
                             key={item.id}
                         >
                             <Slide bottom>
+                                <Hidden smDown>
                                 <Card className={classes.rootCard}>
                                     <CardActionArea>
                                         <CardMedia
@@ -195,6 +200,58 @@ const EventsAlt = () => {
                                         </Button>
                                     </CardActions>
                                 </Card>
+                                </Hidden>
+                                <Hidden mdUp>
+                                <Card className={classes.rootCardMobile}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={
+                                                item.image === null
+                                                    ? Test
+                                                    : item.image
+                                            }
+                                            title="Event"
+                                        />
+                                        <CardContent>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="h2"
+                                            >
+                                                {item.title}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="textSecondary"
+                                                component="p"
+                                            >
+                                                Venue: {item.venue} <br />
+                                                Time: {item.time} <br />
+                                                Link :{" "}
+                                                <a
+                                                    href={item.link}
+                                                    target="_blank"
+                                                >
+                                                    Link
+                                                </a>
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button
+                                            size="small"
+                                            color="primary"
+                                            onClick={() => {
+                                                setKey(index);
+                                                setOpen(true);
+                                            }}
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                                </Hidden>    
                             </Slide>
                         </Grid>
                     ))}

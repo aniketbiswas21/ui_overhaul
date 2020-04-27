@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
          maxWidth: 350,
         height: 400
     },
+    rootCardMobile: {
+        width: 'auto',
+        height: 400
+    },
     media: {
         height: 230,
     },
@@ -146,6 +150,7 @@ const ProjectsAlt = () => {
                             key={item.id}
                         >
                             <Slide bottom>
+                                <Hidden smDown>
                                 <Card className={classes.rootCard}>
                                     <CardActionArea>
                                         <CardMedia
@@ -197,6 +202,60 @@ const ProjectsAlt = () => {
                                         </Button>
                                     </CardActions>
                                 </Card>
+                                </Hidden>
+                                <Hidden mdUp>
+                                <Card className={classes.rootCardMobile}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={
+                                                item.image === null
+                                                    ? Test
+                                                    : item.image
+                                            }
+                                            title="Project"
+                                        />
+                                        <CardContent>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="h2"
+                                            >
+                                                {item.name}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="textSecondary"
+                                                component="p"
+                                            >
+                                                Project Lead:{" "}
+                                                {item.project_lead.name} <br />
+                                                Github Link :
+                                                <a
+                                                    href={item.github_link}
+                                                    target="_blank"
+                                                >
+                                                    Link
+                                                </a>
+                                                <br />
+                                                <br />
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button
+                                            size="small"
+                                            color="primary"
+                                            onClick={() => {
+                                                setKey(index);
+                                                setOpen(true);
+                                            }}
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                                </Hidden>
                             </Slide>
                         </Grid>
                     ))}
