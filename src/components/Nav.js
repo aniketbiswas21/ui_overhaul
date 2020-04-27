@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import styled from "styled-components";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
@@ -15,8 +15,16 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from '@material-ui/icons/Home';
+import EventIcon from '@material-ui/icons/Event';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import CodeIcon from '@material-ui/icons/Code';
+import GroupIcon from '@material-ui/icons/Group';
+import BookIcon from '@material-ui/icons/Book';
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Nav = () => {
+const Nav = (props) => {
     const classes = useStyles();
 
     const [sideDrawer, setSideDrawer] = React.useState(false);
@@ -103,10 +111,16 @@ const Nav = () => {
                     "Team",
                     "Blog",
                 ].map((text, index) => (
-                    <ListItem button key={text}>
+                    <ListItem button key={text} onClick={()=> {text!=='Home'? props.history.push(`/${text.toLowerCase()}`) : props.history.push('/')}}>
                         <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
+                            {index===0 && <HomeIcon />}
+                            {index===1 && <EventIcon />}
+                            {index===2 && <LibraryBooksIcon />}
+                            {index===3 && <CodeIcon />}
+                            {index===4 && <GroupIcon />}
+                            {index===5 && <BookIcon />}
+
+                    </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
@@ -187,4 +201,4 @@ const MobileDiv = styled.div`
     }
 `;
 
-export default Nav;
+export default withRouter(Nav);
