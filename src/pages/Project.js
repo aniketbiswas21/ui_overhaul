@@ -149,8 +149,9 @@ const ProjectsAlt = () => {
                             style={{}}
                             key={item.id}
                         >
+                        <Hidden smDown>
                             <Slide bottom>
-                                <Hidden smDown>
+                                
                                 <Card className={classes.rootCard}>
                                     <CardActionArea>
                                         <CardMedia
@@ -202,8 +203,10 @@ const ProjectsAlt = () => {
                                         </Button>
                                     </CardActions>
                                 </Card>
+                                </Slide>
                                 </Hidden>
                                 <Hidden mdUp>
+                                <Slide bottom>
                                 <Card className={classes.rootCardMobile}>
                                     <CardActionArea>
                                         <CardMedia
@@ -255,9 +258,9 @@ const ProjectsAlt = () => {
                                         </Button>
                                     </CardActions>
                                 </Card>
+                                </Slide>
                                 </Hidden>
-                            </Slide>
-                        </Grid>
+                             </Grid>
                     ))}
                 </Grid>
                 <Modal
